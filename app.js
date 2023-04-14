@@ -1,3 +1,4 @@
+window.addEventListener('load', setButtons);
 
 let gameLength = 5;
 let playerScore = 0;
@@ -10,13 +11,10 @@ function getComputerChoice() {
   return computerChoiceArray[randomNumber];
 }
 
-function getPlayerChoice() {
-  let playerChoice = String(prompt('Write your choice "rock", "paper" or "scissors"'));
+function playRound() {
 
-  return playerChoice.toLowerCase();
-}
-
-function playRound(playerChoice, computerChoice) {
+  let playerChoice = this.value;
+  let computerChoice = getComputerChoice();
 
   if (playerChoice === 'rock' && computerChoice === 'paper') {
     computerScore++;
@@ -54,16 +52,22 @@ function printFinalScore() {
   }
 }
 
-function game() {
-  while (playerScore !== gameLength && computerScore !== gameLength) {
-    playRound(getPlayerChoice(), getComputerChoice());
-    printScores();
-  }
-
-  printFinalScore();
-}
-
 function resetGame() {
   playerScore = 0;
   computerScore = 0;
 }
+
+function setButtons() {
+  const btnRock = document.querySelector('.btn-rock');
+  const btnPaper = document.querySelector('.btn-paper');
+  const btnScissors = document.querySelector('.btn-scissors');
+
+  btnRock.value = 'rock';
+  btnPaper.value = 'paper';
+  btnScissors.value = 'scissors';
+
+  btnRock.addEventListener('click', playRound);
+  btnPaper.addEventListener('click', playRound);
+  btnScissors.addEventListener('click', playRound);
+}
+
