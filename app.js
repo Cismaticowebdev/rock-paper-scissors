@@ -18,21 +18,27 @@ function playRound() {
 
   if (playerChoice === 'rock' && computerChoice === 'paper') {
     computerScore++;
+    updateComputerScore();
     return `You lose! ${computerChoice} beats ${playerChoice}`;
   } else if (playerChoice === 'rock' && computerChoice === 'scissors') {
     playerScore++;
+    updatePlayerScore();
     return `You win! ${playerChoice} beats ${computerChoice}`;
   } else if (playerChoice === 'paper' && computerChoice === 'rock') {
     playerScore++;
+    updatePlayerScore();
     return `You win! ${playerChoice} beats ${computerChoice}`;
   } else if (playerChoice === 'paper' && computerChoice === 'scissors') {
     computerScore++;
+    updateComputerScore();
     return `You lose! ${computerChoice} beats ${playerChoice}`;
   } else if (playerChoice === 'scissors' && computerChoice === 'rock') {
     computerScore++;
+    updateComputerScore();
     return `You lose! ${computerChoice} beats ${playerChoice}`;
   } else if (playerChoice === 'scissors' && computerChoice === 'paper') {
     playerScore++;
+    updatePlayerScore();
     return `You win! ${playerChoice} beats ${computerChoice}`;
   } else {
     return 'It is a draw';
@@ -64,5 +70,15 @@ function setButtons() {
   btnRock.addEventListener('click', playRound);
   btnPaper.addEventListener('click', playRound);
   btnScissors.addEventListener('click', playRound);
+}
+
+function updatePlayerScore() {
+  const playerScoreText = document.querySelector('.player-score');
+  playerScoreText.textContent = `Player Score: ${playerScore}`;
+}
+
+function updateComputerScore() {
+  const computerScoreText = document.querySelector('.computer-score');
+  computerScoreText.textContent = `Computer Score: ${computerScore}`;
 }
 
