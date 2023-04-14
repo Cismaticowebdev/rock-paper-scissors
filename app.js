@@ -18,37 +18,32 @@ function playRound() {
 
   if (playerChoice === 'rock' && computerChoice === 'paper') {
     computerScore++;
-    return console.log(`You lose! ${computerChoice} beats ${playerChoice}`);
+    return `You lose! ${computerChoice} beats ${playerChoice}`;
   } else if (playerChoice === 'rock' && computerChoice === 'scissors') {
     playerScore++;
-    return console.log(`You win! ${playerChoice} beats ${computerChoice}`);
+    return `You win! ${playerChoice} beats ${computerChoice}`;
   } else if (playerChoice === 'paper' && computerChoice === 'rock') {
     playerScore++;
-    return console.log(`You win! ${playerChoice} beats ${computerChoice}`);
+    return `You win! ${playerChoice} beats ${computerChoice}`;
   } else if (playerChoice === 'paper' && computerChoice === 'scissors') {
     computerScore++;
-    return console.log(`You lose! ${computerChoice} beats ${playerChoice}`);
+    return `You lose! ${computerChoice} beats ${playerChoice}`;
   } else if (playerChoice === 'scissors' && computerChoice === 'rock') {
     computerScore++;
-    return console.log(`You lose! ${computerChoice} beats ${playerChoice}`);
+    return `You lose! ${computerChoice} beats ${playerChoice}`;
   } else if (playerChoice === 'scissors' && computerChoice === 'paper') {
     playerScore++;
-    return console.log(`You win! ${playerChoice} beats ${computerChoice}`);
+    return `You win! ${playerChoice} beats ${computerChoice}`;
   } else {
-    return console.log('It is a draw');
+    return 'It is a draw';
   }
 }
 
-function printScores() {
-  console.log(`Player Score = ${playerScore}`);
-  console.log(`Computer Score = ${computerScore}`);
-}
-
-function printFinalScore() {
+function printWinner() {
   if (playerScore > computerScore) {
-    console.log('Player won the game!');
+    return 'Player won the game!';
   } else {
-    console.log('Computer won the game!');
+    return 'Computer won the game!';
   }
 }
 
