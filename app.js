@@ -3,6 +3,7 @@ window.addEventListener('load', setButtons);
 let gameLength = 5;
 let playerScore = 0;
 let computerScore = 0;
+let roundResult = '';
 
 function getComputerChoice() {
   let computerChoiceArray = ['rock', 'paper', 'scissors'];
@@ -19,29 +20,36 @@ function playRound() {
   if (playerChoice === 'rock' && computerChoice === 'paper') {
     computerScore++;
     updateComputerScore();
-    return `You lose! ${computerChoice} beats ${playerChoice}`;
+    roundResult = `You lose! ${computerChoice} beats ${playerChoice}`;
+    updateRoundResult();
   } else if (playerChoice === 'rock' && computerChoice === 'scissors') {
     playerScore++;
     updatePlayerScore();
-    return `You win! ${playerChoice} beats ${computerChoice}`;
+    roundResult = `You win! ${playerChoice} beats ${computerChoice}`;
+    updateRoundResult();
   } else if (playerChoice === 'paper' && computerChoice === 'rock') {
     playerScore++;
     updatePlayerScore();
-    return `You win! ${playerChoice} beats ${computerChoice}`;
+    roundResult = `You win! ${playerChoice} beats ${computerChoice}`;
+    updateRoundResult();
   } else if (playerChoice === 'paper' && computerChoice === 'scissors') {
     computerScore++;
     updateComputerScore();
-    return `You lose! ${computerChoice} beats ${playerChoice}`;
+    roundResult = `You lose! ${computerChoice} beats ${playerChoice}`;
+    updateRoundResult();
   } else if (playerChoice === 'scissors' && computerChoice === 'rock') {
     computerScore++;
     updateComputerScore();
-    return `You lose! ${computerChoice} beats ${playerChoice}`;
+    roundResult = `You lose! ${computerChoice} beats ${playerChoice}`;
+    updateRoundResult();
   } else if (playerChoice === 'scissors' && computerChoice === 'paper') {
     playerScore++;
     updatePlayerScore();
-    return `You win! ${playerChoice} beats ${computerChoice}`;
+    roundResult = `You win! ${playerChoice} beats ${computerChoice}`;
+    updateRoundResult();
   } else {
-    return 'It is a draw';
+    roundResult = 'It is a draw';
+    updateRoundResult();
   }
 }
 
@@ -56,6 +64,8 @@ function printWinner() {
 function resetGame() {
   playerScore = 0;
   computerScore = 0;
+  updatePlayerScore();
+  updateComputerScore();
 }
 
 function setButtons() {
@@ -80,5 +90,10 @@ function updatePlayerScore() {
 function updateComputerScore() {
   const computerScoreText = document.querySelector('.computer-score');
   computerScoreText.textContent = `Computer Score: ${computerScore}`;
+}
+
+function updateRoundResult() {
+  const roundResultText = document.querySelector('.round-result');
+  roundResultText.textContent = `${roundResult}`;
 }
 
