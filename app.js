@@ -57,6 +57,7 @@ function playRound() {
   if (playerScore === gameLength || computerScore === gameLength) {
     checkGameWinner();
     updateRoundResult();
+    disableButtons();
   }
 }
 
@@ -110,4 +111,14 @@ function checkGameWinner() {
   } else {
     roundResult = `The computer won ${computerScore} rounds, the computer is the winner`;
   }
+}
+
+function disableButtons() {
+  const btnRock = document.querySelector('.btn-rock');
+  const btnPaper = document.querySelector('.btn-paper');
+  const btnScissors = document.querySelector('.btn-scissors');
+
+  btnRock.disabled = true;
+  btnPaper.disabled = true;
+  btnScissors.disabled = true;
 }
