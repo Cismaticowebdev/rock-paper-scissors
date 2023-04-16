@@ -14,8 +14,6 @@ function getComputerChoice() {
 
 function playRound() {
 
-  checkGameWinner();
-
   let playerChoice = this.value;
   let computerChoice = getComputerChoice();
 
@@ -55,25 +53,20 @@ function playRound() {
   }
 
   if (playerScore === gameLength || computerScore === gameLength) {
-    checkGameWinner();
+    printGameWinner();
     updateRoundResult();
     disableButtons();
-  }
-}
-
-function printWinner() {
-  if (playerScore > computerScore) {
-    return 'Player won the game!';
-  } else {
-    return 'Computer won the game!';
   }
 }
 
 function resetGame() {
   playerScore = 0;
   computerScore = 0;
+  roundResult = '';
   updatePlayerScore();
   updateComputerScore();
+  updateRoundResult();
+  enableButtons();
 }
 
 function setButtons() {
@@ -105,7 +98,7 @@ function updateRoundResult() {
   roundResultText.textContent = `${roundResult}`;
 }
 
-function checkGameWinner() {
+function printGameWinner() {
   if (playerScore > computerScore) {
     roundResult = `You won ${playerScore} rounds, you are the winner`;
   } else {
@@ -121,4 +114,14 @@ function disableButtons() {
   btnRock.disabled = true;
   btnPaper.disabled = true;
   btnScissors.disabled = true;
+}
+
+function enableButtons() {
+  const btnRock = document.querySelector('.btn-rock');
+  const btnPaper = document.querySelector('.btn-paper');
+  const btnScissors = document.querySelector('.btn-scissors');
+
+  btnRock.disabled = false;
+  btnPaper.disabled = false;
+  btnScissors.disabled = false;
 }
