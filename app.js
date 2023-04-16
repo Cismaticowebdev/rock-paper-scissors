@@ -56,6 +56,7 @@ function playRound() {
     printGameWinner();
     updateRoundResult();
     disableButtons();
+    showResetButton();
   }
 }
 
@@ -67,12 +68,16 @@ function resetGame() {
   updateComputerScore();
   updateRoundResult();
   enableButtons();
+  hideResetButton();
 }
 
 function setButtons() {
+  hideResetButton();
+
   const btnRock = document.querySelector('.btn-rock');
   const btnPaper = document.querySelector('.btn-paper');
   const btnScissors = document.querySelector('.btn-scissors');
+  const resetButton = document.querySelector('.reset-button');
 
   btnRock.value = 'rock';
   btnPaper.value = 'paper';
@@ -81,6 +86,7 @@ function setButtons() {
   btnRock.addEventListener('click', playRound);
   btnPaper.addEventListener('click', playRound);
   btnScissors.addEventListener('click', playRound);
+  resetButton.addEventListener('click', resetGame);
 }
 
 function updatePlayerScore() {
