@@ -14,6 +14,8 @@ function getComputerChoice() {
 
 function playRound() {
 
+  checkGameWinner();
+
   let playerChoice = this.value;
   let computerChoice = getComputerChoice();
 
@@ -49,6 +51,11 @@ function playRound() {
     updateRoundResult();
   } else {
     roundResult = 'It is a draw';
+    updateRoundResult();
+  }
+
+  if (playerScore === gameLength || computerScore === gameLength) {
+    checkGameWinner();
     updateRoundResult();
   }
 }
@@ -97,3 +104,10 @@ function updateRoundResult() {
   roundResultText.textContent = `${roundResult}`;
 }
 
+function checkGameWinner() {
+  if (playerScore > computerScore) {
+    roundResult = `You won ${playerScore} rounds, you are the winner`;
+  } else {
+    roundResult = `The computer won ${computerScore} rounds, the computer is the winner`;
+  }
+}
