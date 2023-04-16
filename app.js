@@ -125,3 +125,13 @@ function enableButtons() {
   btnPaper.disabled = false;
   btnScissors.disabled = false;
 }
+
+function hideResetButton() {
+  const resetButton = document.querySelector('.reset-button');
+  resetButton.style.display = 'none';
+}
+
+function showResetButton() {
+  const resetButton = document.querySelector('.reset-button');
+  resetButton.style.display = 'block';
+}
