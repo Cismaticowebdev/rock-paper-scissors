@@ -1,0 +1,17 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #4a98af;
+}
+
+h1 {
+    font-size: 40px;
+    font-family: 'Lucida Sans', sans-serif;
+}
